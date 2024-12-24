@@ -1,3 +1,6 @@
+<!-- TodoListControl.xaml
+     自定义的Todo列表控件，用于显示和管理Todo项
+     提供了项目的显示、完成状态切换和删除功能 -->
 <UserControl
     x:Class="TodoList.Controls.TodoListControl"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
@@ -8,21 +11,27 @@
     mc:Ignorable="d">
 
     <Grid>
+        <!-- Todo项列表视图 -->
         <ListView x:Name="TodoListView" 
-                  ItemsSource="{x:Bind TodoItems}">
+                  ItemsSource="{x:Bind TodoItems}"
+                  AutomationProperties.Name="Todo项列表">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <Grid Margin="0,5">
+                    <!-- 单个Todo项的布局 -->
+                    <Grid Margin="0,5" AutomationProperties.Name="Todo项">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto"/>
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="Auto"/>
                         </Grid.ColumnDefinitions>
                         
+                        <!-- 完成状态复选框 -->
                         <CheckBox Grid.Column="0" 
                                  IsChecked="{Binding IsCompleted, Mode=TwoWay}"
-                                 Checked="OnTodoCompleted"/>
+                                 Checked="OnTodoCompleted"
+                                 AutomationProperties.Name="完成状态"/>
                         
+                        <!-- Todo项的标题和描述 -->
                         <StackPanel Grid.Column="1" Margin="10,0">
                             <TextBlock Text="{Binding Title}"
                                      Style="{ThemeResource BodyTextBlockStyle}"/>
@@ -31,10 +40,12 @@
                                      Opacity="0.6"/>
                         </StackPanel>
                         
+                        <!-- 删除按钮 -->
                         <Button Grid.Column="2"
                                 Content="&#xE74D;"
                                 FontFamily="Segoe MDL2 Assets"
-                                Click="OnDeleteTodo"/>
+                                Click="OnDeleteTodo"
+                                AutomationProperties.Name="删除Todo项"/>
                     </Grid>
                 </DataTemplate>
             </ListView.ItemTemplate>
