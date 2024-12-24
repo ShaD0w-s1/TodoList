@@ -1,0 +1,39 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Debug",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build",
+            "program": "${workspaceFolder}/bin/x64/Debug/net8.0-windows10.0.19041.0/win-x64/TodoList.exe",
+            "args": [],
+            "cwd": "${workspaceFolder}",
+            "stopAtEntry": false,
+            "env": {
+                "DOTNET_ENVIRONMENT": "Development"
+            }
+        },
+        {
+            "name": "Hot Reload",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "hot-reload",
+            "program": "dotnet",
+            "args": [
+                "watch",
+                "run",
+                "--project",
+                "${workspaceFolder}/TodoList.csproj",
+                "/p:Platform=x64"
+            ],
+            "cwd": "${workspaceFolder}",
+            "stopAtEntry": false,
+            "console": "integratedTerminal",
+            "env": {
+                "DOTNET_ENVIRONMENT": "Development",
+                "DOTNET_WATCH_RESTART_ON_RUDE_EDIT": "true"
+            }
+        }
+    ]
+}
